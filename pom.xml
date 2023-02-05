@@ -17,10 +17,8 @@
     <dependencies>
         <dependency>
             <groupId>org.dwcj</groupId>
-            <artifactId>dwcj.jar</artifactId>
-            <version>${version}</version>
-            <scope>system</scope>
-            <systemPath>${dwcj-lib}</systemPath>
+            <artifactId>dwcj-engine</artifactId>
+            <version>0.11.0</version>
         </dependency>
 
         <dependency>
