@@ -157,6 +157,18 @@ public final class GridExWidget extends AbstractDwcControl {
         Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setColumnMask", args);
     }
 
+    public void setState(String state) {
+        ArrayList args = new ArrayList();
+        args.add(state);
+
+        Object gxState = Environment.getInstance().getDwcjHelper().createInstance("::BBjGridExWidget/GxState.bbj::GxState");
+        Environment.getInstance().getDwcjHelper().invokeMethod(gxState, "setString", args);
+
+        args = new ArrayList();
+        args.add(gxState);
+        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setState", args);
+    }
+
     /**
      * Register an event callback to be executed when the user selects a row in the grid
      *
