@@ -169,6 +169,30 @@ public final class GridExWidget extends AbstractDwcControl {
         Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setState", args);
     }
 
+    public void setMultipleSelection(Boolean multipleSelection) {
+        ArrayList args = new ArrayList();
+        args.add(multipleSelection);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setMultipleSelection", args);
+    }
+
+    public void setShowSelectionCheckbox(Boolean showSelectionCheckbox) {
+        ArrayList args = new ArrayList();
+        args.add(showSelectionCheckbox);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setShowSelectionCheckbox", args);
+    }
+
+    public void setShowHeaderSelectionCheckbox(Boolean showHeaderSelectionCheckbox) {
+        ArrayList args = new ArrayList();
+        args.add(showHeaderSelectionCheckbox);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setShowHeaderSelectionCheckbox", args);
+    }
+
     /**
      * Register an event callback to be executed when the user selects a row in the grid
      *
