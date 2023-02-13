@@ -60,27 +60,68 @@ public final class GridExWidget extends AbstractDwcControl {
         return this;
     }
 
-    public BBjVector getSelectedRows() {
-        BBjVector rows = null;
+    public ResultSet getRows() {
+        ResultSet rs = new ResultSet();
+
+        Object object = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getRows", null);
+
+        if (object != null) {
+            BBjVector rows = (BBjVector) object;
+            
+            if (rows != null && rows.size() > 0) {
+                for (int i = 0; i < rows.size(); i++) {
+                    Object row = rows.get(i);
+    
+                    Object rowAsDataRow = Environment.getInstance().getDwcjHelper().invokeMethod(row, "asDataRow", null);
+                    if (rowAsDataRow != null) {
+                        DataRow dr = (DataRow) rowAsDataRow;
+                        rs.addItem(dr);
+                    }
+                }
+            }
+        }
+
+        return rs;
+    }
+
+    public ResultSet getSelectedRows() {
+        ResultSet rs = new ResultSet();
 
         Object object = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getSelectedRows", null);
-        if (object != null) rows = (BBjVector) object;
 
-        return rows;
+        if (object != null) {
+            BBjVector rows = (BBjVector) object;
+
+            if (rows != null && rows.size() > 0) {
+                for (int i = 0; i < rows.size(); i++) {
+                    Object row = rows.get(i);
+    
+                    Object rowAsDataRow = Environment.getInstance().getDwcjHelper().invokeMethod(row, "asDataRow", null);
+                    if (rowAsDataRow != null) {
+                        DataRow dr = (DataRow) rowAsDataRow;
+                        rs.addItem(dr);
+                    }
+                }
+            }
+        }
+
+        return rs;
     }
 
     public DataRow getSelectedRow() {
         DataRow dr = null;
 
-        BBjVector rows = getSelectedRows();
-        if (rows != null && rows.size() > 0) {
-            Object row = rows.get(0);
-
-            Object rowAsDataRow = Environment.getInstance().getDwcjHelper().invokeMethod(row, "asDataRow", null);
-            if (rowAsDataRow != null) dr = (DataRow) rowAsDataRow;
-        }
+        ResultSet rs = getSelectedRows();
+        if (rs != null && rs.size() > 0) dr = rs.get(0);
 
         return dr;
+    }
+
+    public void setSelectedRow(DataRow row) {
+        ArrayList args = new ArrayList();
+        args.add(row.getRowKey());
+
+        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setSelectedRow", args);
     }
 
     public void deselectAll() {
