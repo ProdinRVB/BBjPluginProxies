@@ -234,6 +234,35 @@ public final class GridExWidget extends AbstractDwcControl {
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setShowHeaderSelectionCheckbox", args);
     }
 
+    public void setGridEditable(Boolean editable) {
+        ArrayList args = new ArrayList();
+        args.add(editable);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEditable", args);
+    }
+
+    public void setColumnEditable(String column, Boolean editable) {
+        ArrayList args = new ArrayList();
+        args.add(column);
+
+        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getColumn", args);
+        if (gxColumn != null) {
+            args = new ArrayList();
+            args.add(editable);
+            
+            Environment.getInstance().getDwcjHelper().invokeMethod(gxColumn, "setEditable", args);
+        }
+    }
+
+    public void setEditType(int editType) {
+        ArrayList args = new ArrayList();
+        args.add(editType);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEditType", args);
+    }
+
     /**
      * Register an event callback to be executed when the user selects a row in the grid
      *
