@@ -8,8 +8,10 @@ import com.basiscomponents.db.ResultSet;
 import org.dwcj.App;
 import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetSelectEvent;
+import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetCellValueChangedEvent;
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetDoubleClickEventSink;
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetSelectEventSink;
+import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetCellValueChangedEventSink;
 import org.dwcj.bridge.PanelAccessor;
 import org.dwcj.controls.AbstractDwcControl;
 import org.dwcj.controls.panels.AbstractDwcjPanel;
@@ -282,6 +284,11 @@ public final class GridExWidget extends AbstractDwcControl {
      */
     public GridExWidget onDoubleClick(Consumer<GridExWidgetSelectEvent> callback) {
         new GridExWidgetDoubleClickEventSink(this, callback);
+        return this;
+    }
+
+    public GridExWidget onCellValueChanged(Consumer<GridExWidgetCellValueChangedEvent> callback) {
+        new GridExWidgetCellValueChangedEventSink(this, callback);
         return this;
     }
 
