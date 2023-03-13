@@ -1,6 +1,8 @@
 package org.dwcj.bbjplugins.gridexwidget.sinks;
 
 import com.basis.bbj.proxies.sysgui.BBjControl;
+import com.basis.startup.type.CustomObject;
+import org.dwcj.App;
 import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetCellValueChangedEvent;
@@ -21,7 +23,8 @@ public final class GridExWidgetCellValueChangedEventSink {
         BBjControl bbjctrl = null;
         try {
             bbjctrl=ControlAccessor.getDefault().getBBjControl(grid);
-            bbjctrl.setCallback(Environment.getInstance().getBBjAPI().ON_GRID_CELL_MODIFY, Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetCellValueChangedEventProxy"), "onEvent");
+            CustomObject ep = Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetCellValueChangedEventProxy");
+            bbjctrl.setCallback(5005, ep, "onEvent");
         } catch (Exception e) {
             Environment.logError(e);
         }
