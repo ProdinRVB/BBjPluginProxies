@@ -14,7 +14,7 @@ import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetSelectEventSink;
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetCellValueChangedEventSink;
 import org.dwcj.bridge.PanelAccessor;
 import org.dwcj.controls.AbstractDwcControl;
-import org.dwcj.controls.panels.AbstractDwcjPanel;
+import org.dwcj.controls.panels.AbstractPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.function.Consumer;
 public final class GridExWidget extends AbstractDwcControl {
 
     @Override
-    protected void create(AbstractDwcjPanel p) {
+    protected void create(AbstractPanel p) {
 
         byte[] flags = new byte[]{(byte) 0x00, (byte) 0x10, (byte) 0x88, (byte) 0x00};
 
