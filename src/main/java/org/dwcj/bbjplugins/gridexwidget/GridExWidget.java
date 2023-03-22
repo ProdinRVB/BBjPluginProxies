@@ -62,6 +62,13 @@ public final class GridExWidget extends AbstractDwcControl {
         return this;
     }
 
+    public GridExWidget updateData(ResultSet rs) {
+        ArrayList args = new ArrayList();
+        args.add(rs);
+        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "updateData", args);
+        return this;
+    }
+
     public ResultSet getRows() {
         ResultSet rs = new ResultSet();
 
