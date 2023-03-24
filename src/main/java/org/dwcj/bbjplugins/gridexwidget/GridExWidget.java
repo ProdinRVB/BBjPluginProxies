@@ -219,6 +219,17 @@ public final class GridExWidget extends AbstractDwcControl {
         Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setState", args);
     }
 
+    public String getState() {
+        Object gxState = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getState", null);
+        
+        if (gxState != null) {
+            Object state = Environment.getInstance().getDwcjHelper().invokeMethod(gxState, "getString", null);
+            if (state != null) return state.toString();
+        }
+
+        return null;
+    }
+
     public void setMultipleSelection(Boolean multipleSelection) {
         ArrayList args = new ArrayList();
         args.add(multipleSelection);
