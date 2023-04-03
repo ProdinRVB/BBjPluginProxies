@@ -4,7 +4,8 @@ import com.basis.bbj.proxies.sysgui.BBjControl;
 import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetSelectEvent;
-import org.dwcj.bridge.ControlAccessor;
+import org.dwcj.bridge.ComponentAccessor;
+
 
 import java.util.function.Consumer;
 
@@ -20,7 +21,7 @@ public final class GridExWidgetDoubleClickEventSink {
 
         BBjControl bbjctrl = null;
         try {
-            bbjctrl=ControlAccessor.getDefault().getBBjControl(grid);
+            bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
             bbjctrl.setCallback(Environment.getInstance().getBBjAPI().ON_GRID_DOUBLE_CLICK, Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetDoubleClickEventProxy"), "onEvent");
         } catch (Exception e) {
             Environment.logError(e);

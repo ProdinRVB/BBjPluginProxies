@@ -6,7 +6,7 @@ import org.dwcj.App;
 import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetCellValueChangedEvent;
-import org.dwcj.bridge.ControlAccessor;
+import org.dwcj.bridge.ComponentAccessor;
 
 import java.util.function.Consumer;
 
@@ -22,7 +22,7 @@ public final class GridExWidgetCellValueChangedEventSink {
 
         BBjControl bbjctrl = null;
         try {
-            bbjctrl=ControlAccessor.getDefault().getBBjControl(grid);
+            bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
             CustomObject ep = Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetCellValueChangedEventProxy");
             bbjctrl.setCallback(5005, ep, "onEvent");
         } catch (Exception e) {

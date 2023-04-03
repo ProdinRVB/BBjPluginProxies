@@ -12,24 +12,24 @@ import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetCellValueChangedEvent
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetDoubleClickEventSink;
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetSelectEventSink;
 import org.dwcj.bbjplugins.gridexwidget.sinks.GridExWidgetCellValueChangedEventSink;
-import org.dwcj.bridge.PanelAccessor;
-import org.dwcj.controls.AbstractDwcControl;
-import org.dwcj.controls.panels.AbstractPanel;
+import org.dwcj.bridge.WindowAccessor;
+import org.dwcj.component.AbstractDwcComponent;
+import org.dwcj.component.window.AbstractWindow;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 @SuppressWarnings("java:S3740")
-public final class GridExWidget extends AbstractDwcControl {
+public final class GridExWidget extends AbstractDwcComponent {
 
     @Override
-    protected void create(AbstractPanel p) {
+    protected void create(AbstractWindow p) {
 
         byte[] flags = new byte[]{(byte) 0x00, (byte) 0x10, (byte) 0x88, (byte) 0x00};
 
         try {
-            BBjWindow w = PanelAccessor.getDefault().getBBjWindow(p);
+            BBjWindow w = WindowAccessor.getDefault().getBBjWindow(p);
             //todo: honor visibility flag, if set before adding the control to the form, so it's created invisibly right away
             BBjChildWindow cw = w.addChildWindow(w.getAvailableControlID(), BASISNUMBER_1, BASISNUMBER_1, BASISNUMBER_1, BASISNUMBER_1, "", flags, Environment.getInstance().getSysGui().getAvailableContext());
             super.ctrl = Environment.getInstance().getDwcjHelper().createWidget("::BBjGridExWidget/BBjGridExWidget.bbj::BBjGridExWidget", cw);

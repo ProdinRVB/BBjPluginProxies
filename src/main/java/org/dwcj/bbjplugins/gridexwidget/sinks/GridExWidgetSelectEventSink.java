@@ -4,7 +4,7 @@ import com.basis.bbj.proxies.sysgui.BBjControl;
 import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.bbjplugins.gridexwidget.events.GridExWidgetSelectEvent;
-import org.dwcj.bridge.ControlAccessor;
+import org.dwcj.bridge.ComponentAccessor;
 
 import java.util.function.Consumer;
 
@@ -20,7 +20,7 @@ public final class GridExWidgetSelectEventSink {
 
         BBjControl bbjctrl = null;
         try {
-            bbjctrl=ControlAccessor.getDefault().getBBjControl(grid);
+            bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
             bbjctrl.setCallback(Environment.getInstance().getBBjAPI().ON_GRID_SELECT_ROW, Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetSelectEventProxy"), "onEvent");
         } catch (Exception e) {
             Environment.logError(e);
