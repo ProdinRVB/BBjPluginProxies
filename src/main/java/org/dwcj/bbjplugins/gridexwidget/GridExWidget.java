@@ -62,6 +62,13 @@ public final class GridExWidget extends AbstractDwcComponent {
         return this;
     }
 
+    public GridExWidget updateData(ResultSet rs) {
+        ArrayList args = new ArrayList();
+        args.add(rs);
+        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "updateData", args);
+        return this;
+    }
+
     public ResultSet getRows() {
         ResultSet rs = new ResultSet();
 
@@ -210,6 +217,17 @@ public final class GridExWidget extends AbstractDwcComponent {
         args = new ArrayList();
         args.add(gxState);
         Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setState", args);
+    }
+
+    public String getState() {
+        Object gxState = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getState", null);
+        
+        if (gxState != null) {
+            Object state = Environment.getInstance().getDwcjHelper().invokeMethod(gxState, "getString", null);
+            if (state != null) return state.toString();
+        }
+
+        return null;
     }
 
     public void setMultipleSelection(Boolean multipleSelection) {
