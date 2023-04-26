@@ -74,9 +74,8 @@ class public BBjGridExWidgetCellValueChangedEventProxy implements EventProxy
     method public void onEvent(BBjEvent ev!)
           o! = #obj!
           ev_obj! = CAST(BBjCustomEvent,ev!).getObject()
-            rem here you still need to construct the event object
-
-          eval("o!."+#method!+"(ev_obj!.toString())")
+          clientRow! = ev_obj!.getRow().getClientRow()
+          eval("o!."+#method!+"(clientRow!.toString())")
     methodend
 
 classend
