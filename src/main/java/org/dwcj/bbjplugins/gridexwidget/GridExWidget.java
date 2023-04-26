@@ -282,6 +282,27 @@ public final class GridExWidget extends AbstractDwcComponent {
         Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEditType", args);
     }
+    
+    public void setEnableGridFilter(Boolean enableFilter) {
+        ArrayList args = new ArrayList();
+        args.add(enableFilter);
+
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEnableFilter", args);
+    }
+
+    public void setEnableColumnFilter(String column, Boolean enableFilter) {
+        ArrayList args = new ArrayList();
+        args.add(column);
+
+        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getColumn", args);
+        if (gxColumn != null) {
+            args = new ArrayList();
+            args.add(enableFilter);
+
+            Environment.getInstance().getDwcjHelper().invokeMethod(gxColumn, "setEnableFilter", args);
+        }
+    }
 
     /**
      * Register an event callback to be executed when the user selects a row in the grid
