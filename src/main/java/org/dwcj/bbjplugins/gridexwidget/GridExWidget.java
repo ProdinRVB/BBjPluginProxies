@@ -32,7 +32,7 @@ public final class GridExWidget extends AbstractDwcComponent {
             BBjWindow w = WindowAccessor.getDefault().getBBjWindow(p);
             //todo: honor visibility flag, if set before adding the control to the form, so it's created invisibly right away
             BBjChildWindow cw = w.addChildWindow(w.getAvailableControlID(), BASISNUMBER_1, BASISNUMBER_1, BASISNUMBER_1, BASISNUMBER_1, "", flags, Environment.getInstance().getSysGui().getAvailableContext());
-            super.ctrl = Environment.getInstance().getDwcjHelper().createWidget("::BBjGridExWidget/BBjGridExWidget.bbj::BBjGridExWidget", cw);
+            super.control = Environment.getInstance().getDwcjHelper().createWidget("::BBjGridExWidget/BBjGridExWidget.bbj::BBjGridExWidget", cw);
             catchUp();
         } catch (Exception e) {
             Environment.logError(e);
@@ -47,7 +47,7 @@ public final class GridExWidget extends AbstractDwcComponent {
     public GridExWidget setData(ResultSet rs) {
         ArrayList args = new ArrayList();
         args.add(rs);
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setData", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setData", args);
         return this;
     }
 
@@ -57,7 +57,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         args.add(render);
         args.add(addAll);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setData", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setData", args);
 
         return this;
     }
@@ -65,14 +65,14 @@ public final class GridExWidget extends AbstractDwcComponent {
     public GridExWidget updateData(ResultSet rs) {
         ArrayList args = new ArrayList();
         args.add(rs);
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "updateData", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "updateData", args);
         return this;
     }
 
     public ResultSet getRows() {
         ResultSet rs = new ResultSet();
 
-        Object object = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getRows", null);
+        Object object = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getRows", null);
 
         if (object != null) {
             BBjVector rows = (BBjVector) object;
@@ -96,7 +96,7 @@ public final class GridExWidget extends AbstractDwcComponent {
     public ResultSet getSelectedRows() {
         ResultSet rs = new ResultSet();
 
-        Object object = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getSelectedRows", null);
+        Object object = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getSelectedRows", null);
 
         if (object != null) {
             BBjVector rows = (BBjVector) object;
@@ -130,11 +130,11 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(row.getRowKey());
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setSelectedRow", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setSelectedRow", args);
     }
 
     public void deselectAll() {
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "deselectAll", null);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "deselectAll", null);
     }
 
     public Object addColumn(String field, String label, int type) {
@@ -143,7 +143,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         args.add(label);
         args.add(type);
 
-        return Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "addColumn", args);
+        return Environment.getInstance().getDwcjHelper().invokeMethod(control, "addColumn", args);
     }
 
     public Object addColumnGroup(String id, String label, List<String> columns, Boolean marryChildren, String cssClass) {
@@ -159,36 +159,36 @@ public final class GridExWidget extends AbstractDwcComponent {
         args.add(marryChildren);
         args.add(cssClass);
 
-        return Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "addColumnGroup", args);
+        return Environment.getInstance().getDwcjHelper().invokeMethod(control, "addColumnGroup", args);
     }
 
     public Object addRow(DataRow row) {
         ArrayList args = new ArrayList();
         args.add(row);
 
-        return Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "addRow", args);
+        return Environment.getInstance().getDwcjHelper().invokeMethod(control, "addRow", args);
     }
 
     public Object updateRow(DataRow row) {
         ArrayList args = new ArrayList();
         args.add(row);
 
-        return Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "updateRow", args);
+        return Environment.getInstance().getDwcjHelper().invokeMethod(control, "updateRow", args);
     }
 
     public Object removeRow(DataRow row) {
         ArrayList args = new ArrayList();
         args.add(row);
 
-        return Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "removeRow", args);
+        return Environment.getInstance().getDwcjHelper().invokeMethod(control, "removeRow", args);
     }
 
     public void setFitToGrid() {
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setFitToGrid", null);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setFitToGrid", null);
     }
 
     public void autoSizeColumns() {
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "autoSizeColumns", null);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "autoSizeColumns", null);
     }
 
     public void setColumnAlignment(String field, int alignment) {
@@ -196,7 +196,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         args.add(field);
         args.add(alignment);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setColumnAlignment", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setColumnAlignment", args);
     }
 
     public void setColumnMask(String field, String mask) {
@@ -204,7 +204,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         args.add(field);
         args.add(mask);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setColumnMask", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setColumnMask", args);
     }
 
     public void setState(String state) {
@@ -216,11 +216,11 @@ public final class GridExWidget extends AbstractDwcComponent {
 
         args = new ArrayList();
         args.add(gxState);
-        Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "setState", args);
+        Environment.getInstance().getDwcjHelper().invokeMethod(control, "setState", args);
     }
 
     public String getState() {
-        Object gxState = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getState", null);
+        Object gxState = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getState", null);
         
         if (gxState != null) {
             Object state = Environment.getInstance().getDwcjHelper().invokeMethod(gxState, "getString", null);
@@ -234,7 +234,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(multipleSelection);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setMultipleSelection", args);
     }
 
@@ -242,7 +242,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(showSelectionCheckbox);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setShowSelectionCheckbox", args);
     }
 
@@ -250,7 +250,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(showHeaderSelectionCheckbox);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setShowHeaderSelectionCheckbox", args);
     }
 
@@ -258,7 +258,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(editable);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEditable", args);
     }
 
@@ -266,7 +266,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(column);
 
-        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getColumn", args);
+        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getColumn", args);
         if (gxColumn != null) {
             args = new ArrayList();
             args.add(editable);
@@ -279,7 +279,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(editType);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEditType", args);
     }
     
@@ -287,7 +287,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(enableFilter);
 
-        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getOptions", null);
+        Object gxOptions = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getOptions", null);
         if (gxOptions != null) Environment.getInstance().getDwcjHelper().invokeMethod(gxOptions, "setEnableFilter", args);
     }
 
@@ -295,7 +295,7 @@ public final class GridExWidget extends AbstractDwcComponent {
         ArrayList args = new ArrayList();
         args.add(column);
 
-        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(ctrl, "getColumn", args);
+        Object gxColumn = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getColumn", args);
         if (gxColumn != null) {
             args = new ArrayList();
             args.add(enableFilter);
@@ -342,12 +342,6 @@ public final class GridExWidget extends AbstractDwcComponent {
         super.setVisible(visible);
         return this;
     }
-    
-    @Override
-    public GridExWidget setEnabled(Boolean enabled) {
-        super.setEnabled(enabled);
-        return this;
-    }
 
     @Override
     public GridExWidget setTooltipText(String text) {
@@ -358,12 +352,6 @@ public final class GridExWidget extends AbstractDwcComponent {
     @Override
     public GridExWidget setAttribute(String attribute, String value){
         super.setAttribute(attribute, value);
-        return this;
-    }
-
-    @Override
-    public GridExWidget setId(String elementId){
-        super.setId(elementId);
         return this;
     }
 

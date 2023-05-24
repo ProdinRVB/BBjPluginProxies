@@ -5,7 +5,6 @@ import org.dwcj.Environment;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.AbstractDwcComponent;
 import org.dwcj.component.ComponentEvent;
-;
 
 import java.io.IOException;
 import java.text.ParseException;
