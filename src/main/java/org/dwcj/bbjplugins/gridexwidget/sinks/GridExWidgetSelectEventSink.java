@@ -21,7 +21,7 @@ public final class GridExWidgetSelectEventSink {
         BBjControl bbjctrl = null;
         try {
             bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
-            bbjctrl.setCallback(Environment.getInstance().getBBjAPI().ON_GRID_SELECT_ROW, Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetSelectEventProxy"), "onEvent");
+            bbjctrl.setCallback(Environment.getCurrent().getBBjAPI().ON_GRID_SELECT_ROW, Environment.getCurrent().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetSelectEventProxy"), "onEvent");
         } catch (Exception e) {
             Environment.logError(e);
         }

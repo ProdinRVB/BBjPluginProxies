@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  */
 public final class BBjThreadProxy {
 
-    private final IDwcjBBjBridge dwcjHelper = Environment.getInstance().getDwcjHelper();
+    private final IDwcjBBjBridge dwcjHelper = Environment.getCurrent().getDwcjHelper();
 
     private final Object classInstance;
 

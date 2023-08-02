@@ -12,7 +12,7 @@ public class BBjThreadProxyEventSink {
 
     protected final ArrayList<Consumer<BBjThreadProxy>> consumers = new ArrayList<>();
     protected final BBjThreadProxy proxy;
-    private final IDwcjBBjBridge dwcjHelper = Environment.getInstance().getDwcjHelper();
+    private final IDwcjBBjBridge dwcjHelper = Environment.getCurrent().getDwcjHelper();
 
     private final int eventType;
 
@@ -34,7 +34,7 @@ public class BBjThreadProxyEventSink {
         if (consumers.isEmpty()){
             ArrayList<Object> arglist = new ArrayList<>();
             arglist.add(eventType);
-            arglist.add(  Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent"));
+            arglist.add(  Environment.getCurrent().getDwcjHelper().getEventProxy(this, "onEvent"));
             arglist.add( "onEvent");
             dwcjHelper.invokeMethod(proxy.getBBjThreadInstance(),"setCallback",arglist);
         }

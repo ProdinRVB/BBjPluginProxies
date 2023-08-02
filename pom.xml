@@ -6,7 +6,7 @@
 
     <groupId>org.dwcj.bbjplugins</groupId>
     <artifactId>dwcj-plugin-proxies</artifactId>
-    <version>23.00</version>
+    <version>23.02</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.dwcj</groupId>
             <artifactId>dwcj-engine</artifactId>
-            <version>23.00</version>
+            <version>23.02</version>
         </dependency>
 
         <dependency>

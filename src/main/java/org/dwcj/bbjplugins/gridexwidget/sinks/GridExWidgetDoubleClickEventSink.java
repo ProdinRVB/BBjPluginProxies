@@ -22,7 +22,7 @@ public final class GridExWidgetDoubleClickEventSink {
         BBjControl bbjctrl = null;
         try {
             bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
-            bbjctrl.setCallback(Environment.getInstance().getBBjAPI().ON_GRID_DOUBLE_CLICK, Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetDoubleClickEventProxy"), "onEvent");
+            bbjctrl.setCallback(Environment.getCurrent().getBBjAPI().ON_GRID_DOUBLE_CLICK, Environment.getCurrent().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetDoubleClickEventProxy"), "onEvent");
         } catch (Exception e) {
             Environment.logError(e);
         }

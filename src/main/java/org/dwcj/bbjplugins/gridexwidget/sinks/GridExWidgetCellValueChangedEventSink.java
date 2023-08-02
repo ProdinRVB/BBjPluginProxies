@@ -23,7 +23,7 @@ public final class GridExWidgetCellValueChangedEventSink {
         BBjControl bbjctrl = null;
         try {
             bbjctrl= ComponentAccessor.getDefault().getBBjControl(grid);
-            CustomObject ep = Environment.getInstance().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetCellValueChangedEventProxy");
+            CustomObject ep = Environment.getCurrent().getDwcjHelper().getEventProxy(this, "onEvent", "::BBjGridExWidgetEventProxies.bbj::BBjGridExWidgetCellValueChangedEventProxy");
             bbjctrl.setCallback(5005, ep, "onEvent");
         } catch (Exception e) {
             Environment.logError(e);
