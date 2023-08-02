@@ -70,7 +70,7 @@ public final class GridExWidget extends AbstractDwcComponent {
     }
 
     public GridExWidget clearData() {
-        Environment.getInstance().getDwcjHelper().invokeMethod(control, "clearData", null);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(control, "clearData", null);
         return this;
     }
 
@@ -309,52 +309,68 @@ public final class GridExWidget extends AbstractDwcComponent {
         }
     }
 
+    public void setGroupIncludeFooter(Boolean groupIncludeFooter) {
+        ArrayList args = new ArrayList();
+        args.add(groupIncludeFooter);
+
+        Object gxOptions = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getOptions", null);
+        if (gxOptions != null) Environment.getCurrent().getDwcjHelper().invokeMethod(gxOptions, "setGroupIncludeFooter", args);
+    }
+
+    public void setGroupIncludeTotalFooter(Boolean groupIncludeTotalFooter) {
+        ArrayList args = new ArrayList();
+        args.add(groupIncludeTotalFooter);
+
+        Object gxOptions = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getOptions", null);
+        if (gxOptions != null) Environment.getCurrent().getDwcjHelper().invokeMethod(gxOptions, "setGroupIncludeTotalFooter", args);
+    }
+
     public void addStatusBarTotalRowCountComponent() {
-        Object gxStatusBar = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
-        Object gxStatusBarTotalRowCountComponent = Environment.getInstance().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarTotalRowCountComponent");
+        Object gxStatusBar = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
+        Object gxStatusBarTotalRowCountComponent = Environment.getCurrent().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarTotalRowCountComponent");
 
         ArrayList args = new ArrayList();
         args.add(gxStatusBarTotalRowCountComponent);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
     }
 
     public void addStatusBarFilteredRowCountComponent() {
-        Object gxStatusBar = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
-        Object gxStatusBarFilteredRowCountComponent = Environment.getInstance().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarFilteredRowCountComponent");
+        Object gxStatusBar = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
+        Object gxStatusBarFilteredRowCountComponent = Environment.getCurrent().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarFilteredRowCountComponent");
 
         ArrayList args = new ArrayList();
         args.add(gxStatusBarFilteredRowCountComponent);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
     }
 
     public void addStatusBarTotalAndFilteredRowCountComponent(String alignment) {
-        Object gxStatusBar = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
-        Object gxStatusBarTotalAndFilteredRowCountComponent = Environment.getInstance().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarTotalAndFilteredRowCountComponent");
+        Object gxStatusBar = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
+        Object gxStatusBarTotalAndFilteredRowCountComponent = Environment.getCurrent().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarTotalAndFilteredRowCountComponent");
         
         ArrayList args = new ArrayList();
         args.add(alignment);
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBarTotalAndFilteredRowCountComponent, "setAlignment", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBarTotalAndFilteredRowCountComponent, "setAlignment", args);
 
         args = new ArrayList();
         args.add(gxStatusBarTotalAndFilteredRowCountComponent);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
     }
 
     public void addStatusBarSelectedRowCountComponent(String alignment) {
-        Object gxStatusBar = Environment.getInstance().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
-        Object gxStatusBarSelectedRowCountComponent = Environment.getInstance().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarSelectedRowCountComponent");
+        Object gxStatusBar = Environment.getCurrent().getDwcjHelper().invokeMethod(control, "getStatusbar", null);
+        Object gxStatusBarSelectedRowCountComponent = Environment.getCurrent().getDwcjHelper().createInstance("::BBjGridExWidget/GxStatusBar.bbj::GxStatusBarSelectedRowCountComponent");
         
         ArrayList args = new ArrayList();
         args.add(alignment);
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBarSelectedRowCountComponent, "setAlignment", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBarSelectedRowCountComponent, "setAlignment", args);
 
         args = new ArrayList();
         args.add(gxStatusBarSelectedRowCountComponent);
 
-        Environment.getInstance().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
+        Environment.getCurrent().getDwcjHelper().invokeMethod(gxStatusBar, "addComponent", args);
     }
 
     /**
